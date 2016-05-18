@@ -4,8 +4,6 @@ This repository contains a ruby-based hook for the [`letsencrypt.sh`](letsencryp
 
 Looking for a DNS provider with an API? Try AWS Route 53, Rackspace, or CloudFlare.
 
-Have more questions?  Skip down to the FAQ section below.
-
 Relevant Links:
 * letsencrypt.sh: https://github.com/lukas2511/letsencrypt.sh
 * Let's Encrypt: https://letsencrypt.org/
@@ -23,6 +21,7 @@ Install the ruby dependencies:
 ``` sh
  $ bundle install
 ```
+
 ## Usage
 ``` bash
 letsencrypt-jbjonesjr.sh$ ./letsencrypt.sh -c -t dns-01 -d jbjonesjr.com,blog.jbjonesjr.com -k ./manual_hook.rb
