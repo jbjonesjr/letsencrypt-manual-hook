@@ -6,7 +6,7 @@ def setup_dns(domain, txt_challenge)
   dns = Resolv::DNS.new;
   acme_domain = "_acme-challenge."+domain; 
   puts "Create TXT record for the domain: #{acme_domain}. TXT record:"
-  puts "\"#{txt_challenge}\""
+  puts txt_challenge
   puts "Press enter when DNS has been updated..."
   $stdin.readline()
   resolved = false;
