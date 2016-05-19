@@ -8,23 +8,21 @@ Relevant Links:
 * letsencrypt.sh: https://github.com/lukas2511/letsencrypt.sh
 * Let's Encrypt: https://letsencrypt.org/
 
+## Required
+* git client for tool download
+* ruby installed and available on the PATH
+
 ## Installation
-Start by cloning all of the files from GitHub:
+Download the files for installation
 
 ``` sh
   $ git clone https://github.com/lukas2511/letsencrypt.sh.git
-  $ cd letsencrypt.sh
-  $ git clone https://github.com/jbjonesjr/letsencrypt-manual-hook.git hooks/manual
-```
-Install the ruby dependencies:
-
-``` sh
- $ bundle install
+  $ git clone https://github.com/jbjonesjr/letsencrypt-manual-hook.git letsencrypt.sh/hooks/manual
 ```
 
 ## Usage
 ``` bash
-letsencrypt-jbjonesjr.sh$ ./letsencrypt.sh -c -t dns-01 -d jbjonesjr.com,blog.jbjonesjr.com -k ./manual_hook.rb
+letsencrypt-jbjonesjr.sh$ ./letsencrypt.sh -c -t dns-01 -d jbjonesjr.com -d blog.jbjonesjr.com -k ./hooks/manual/manual_hook.rb
 # INFO: Using main config file /Users/jbjonesjr/lets-encrypt/letsencrypt-jbjonesjr.sh/config.sh
 Processing jbjonesjr.com with alternative names: blog.jbjonesjr.com
  + Signing domains...
