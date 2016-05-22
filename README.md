@@ -58,7 +58,7 @@ jbjonesjr.com
  + Done!
 ```
 
-## This is to hard
+## This is too hard
 Hate the idea of having to update DNS records manually? Want to have a script that takes of this for you without cutting and pasting, and pressing the enter key? Try these other providers and their related hooks:
 * [Route 53](https://gist.github.com/asimihsan/d8d8f0f10bdc85fc6f8a)
 * [Rackspace](https://github.com/major/letsencrypt-rackspace-hook/)
