@@ -5,7 +5,7 @@ This repository contains a ruby-based hook for the [`dehyrdated`](dehyrdated: ht
 Looking for a DNS provider with an API? Try AWS Route 53, Rackspace, or CloudFlare.
 
 Relevant Links:
-* letsencrypt.sh: https://github.com/lukas2511/dehydrated
+* dehydrated: https://github.com/lukas2511/dehydrated
 * Let's Encrypt: https://letsencrypt.org/
 
 ## Required
