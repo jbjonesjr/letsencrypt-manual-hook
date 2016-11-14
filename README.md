@@ -1,4 +1,4 @@
-# Manual DNS hook for letsencrypt.sh
+# Manual DNS hook for dehydrated
 
 This repository contains a ruby-based hook for the [`dehyrdated`](dehyrdated: https://github.com/lukas2511/dehydrated) project (a [Let's Encrypt](https://letsencrypt.org/), shell script ACME client) that allows a user to obtain a certificate from the `Let's Encrypt`_ API via a DNS challenge. The hook will provide you with the domain and challenge details required for you to add to your DNS records, and poll until this change has propogated before allowing Let's Encrypt to confirm that changes. This is helpful for DNS providers and solutions that do not provide an API. This is an interactive hook to support those DNS providers that require manual interaction.
 
