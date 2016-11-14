@@ -1,6 +1,6 @@
 # Manual DNS hook for dehydrated
 
-This repository contains a ruby-based hook for the [`dehyrdated`](dehyrdated: https://github.com/lukas2511/dehydrated) project (a [Let's Encrypt](https://letsencrypt.org/), shell script ACME client) that allows a user to obtain a certificate from the `Let's Encrypt`_ API via a DNS challenge. The hook will provide you with the domain and challenge details required for you to add to your DNS records, and poll until this change has propogated before allowing Let's Encrypt to confirm that changes. This is helpful for DNS providers and solutions that do not provide an API. This is an interactive hook to support those DNS providers that require manual interaction.
+This repository contains a ruby-based hook for the [`dehyrdated`](dehyrdated: https://github.com/lukas2511/dehydrated) project (a [Let's Encrypt](https://letsencrypt.org/), shell script ACME client) that allows a user to obtain a certificate from the _Let's Encrypt_ API via a DNS challenge. The hook will provide you with the domain and challenge details required for you to add to your DNS records, and poll until this change has propogated before allowing Let's Encrypt to confirm that changes. This is helpful for DNS providers and solutions that do not provide an API. This is an interactive hook to support those DNS providers that require manual interaction.
 
 Looking for a DNS provider with an API? Try AWS Route 53, Rackspace, or CloudFlare.
 
@@ -16,13 +16,13 @@ Relevant Links:
 Download the files for installation
 
 ``` sh
-  $ git clone https://github.com/lukas2511/letsencrypt.sh.git
-  $ git clone https://github.com/jbjonesjr/letsencrypt-manual-hook.git letsencrypt.sh/hooks/manual
+  $ git clone https://github.com/lukas2511/dehydrated.git
+  $ git clone https://github.com/jbjonesjr/letsencrypt-manual-hook.git dehydrated/hooks/manual
 ```
 
 ## Usage
 ``` bash
-letsencrypt-jbjonesjr.sh$ ./letsencrypt.sh -c -t dns-01 -d jbjonesjr.com -d blog.jbjonesjr.com -k ./hooks/manual/manual_hook.rb
+letsencrypt-jbjonesjr.sh$ ./dehydrated -c -t dns-01 -d jbjonesjr.com -d blog.jbjonesjr.com -k ./hooks/manual/manual_hook.rb
 # INFO: Using main config file /Users/jbjonesjr/lets-encrypt/letsencrypt-jbjonesjr.sh/config.sh
 Processing jbjonesjr.com with alternative names: blog.jbjonesjr.com
  + Signing domains...
