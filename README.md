@@ -63,3 +63,4 @@ Hate the idea of having to update DNS records manually? Want to have a script th
 * [Route 53](https://gist.github.com/asimihsan/d8d8f0f10bdc85fc6f8a)
 * [Rackspace](https://github.com/major/letsencrypt-rackspace-hook/)
 * [Cloudflare](https://github.com/kappataumu/letsencrypt-cloudflare-hook)
+* [DNS Simple](https://github.com/danp/letsencrypt-dnsimple)
