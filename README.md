@@ -15,14 +15,14 @@ Relevant Links:
 ## Installation
 Download the files for installation
 
-``` sh
+``` bash
   $ git clone https://github.com/lukas2511/dehydrated.git
   $ git clone https://github.com/jbjonesjr/letsencrypt-manual-hook.git dehydrated/hooks/manual
 ```
 
 ## Usage
 ``` bash
-letsencrypt-jbjonesjr.sh$ ./dehydrated -c -t dns-01 -d jbjonesjr.com -d blog.jbjonesjr.com -k ./hooks/manual/manual_hook.rb
+git-projects$ ./dehydrated/dehydrated -c -t dns-01 -d jbjonesjr.com -d blog.jbjonesjr.com -k ./dehydrated/hooks/manual/manual_hook.rb
 # INFO: Using main config file /Users/jbjonesjr/lets-encrypt/letsencrypt-jbjonesjr.sh/config.sh
 Processing jbjonesjr.com with alternative names: blog.jbjonesjr.com
  + Signing domains...
