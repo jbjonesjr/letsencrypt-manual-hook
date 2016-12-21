@@ -3,11 +3,12 @@
 require 'resolv'
 
 def setup_dns(domain, txt_challenge)
+  resolved = false;
+  singleLoop = false;
   dns = Resolv::DNS.new;
   acme_domain = "_acme-challenge."+domain; 
   puts "Checking TXT record for the domain: \"#{acme_domain}\". TXT record:"
   puts "\"#{txt_challenge}\""
-  resolved = false;
 
   until resolved
     dns.each_resource(acme_domain, Resolv::DNS::Resource::IN::TXT) { |resp|
@@ -20,11 +21,13 @@ def setup_dns(domain, txt_challenge)
     }
 
     if !resolved
-
-     puts "Create TXT record for the domain: \"#{acme_domain}\". TXT record:"
-     puts "\"#{txt_challenge}\""
-     puts "Press enter when DNS has been updated..."
-     $stdin.readline()
+     if !singleLoop
+       puts "Create TXT record for the domain: \"#{acme_domain}\". TXT record:"
+       puts "\"#{txt_challenge}\""
+       puts "Press enter when DNS has been updated..."
+       $stdin.readline()
+       singleLoop = true
+     end
 
      puts "Didn't find a match for #{txt_challenge}"; 
      puts "Waiting to retry..."; 
