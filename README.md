@@ -21,6 +21,41 @@ Download the files for installation
 ```
 
 ## Usage
+### Certificate for single domain 
+``` bash
+# **Note:** The `dehyrdrated` client uses the following flags in this example
+# --cron (-c): Sign/renew non-existant/changed/expiring certificates. 
+# --challenge (-t) [http-01|dns-01]: Which challenge should be used? Currently http-01 and dns-01 are supported 
+# --domain (-d) [domain.tld]: Use specified domain name(s) instead of domains.txt entry (one certificate!) 
+# --hook (-k) [path/to/hook.sh]: Use specified script for hooks
+
+git-projects$ ./dehydrated/dehydrated -c -t dns-01 -d jbjonesjr.com -k ./dehydrated/hooks/manual/manual_hook.rb
+# INFO: Using main config file /Users/jbjonesjr/lets-encrypt/letsencrypt-jbjonesjr.sh/config.sh
+Processing jbjonesjr.com with alternative names: blog.jbjonesjr.com
+ + Signing domains...
+ + Generating private key...
+ + Generating signing request...
+ + Requesting challenge for jbjonesjr.com...
+Create TXT record for the domain: _acme-challenge.jbjonesjr.com. TXT record:
+NT5EcszzzD2imO2IAWh81KqPHcx7nCSR8jHOEwKDjHQ
+Press any key when DNS has been updated...
+
+Found NT5EcszzzD2imO2IAWh81KqPHcx7nCSR8jHOEwKDjHQ. match.
+ + Responding to challenge for jbjonesjr.com...
+Challenge complete. Please delete this TXT record(or in bulk later). Press any key when DNS has been updated...
+
+ + Challenge is valid!
+ + Requesting certificate...
+ + Checking certificate...
+ + Done!
+ + Creating fullchain.pem...
+deploy_cert
+jbjonesjr.com
+/Users/jbjonesjr/lets-encrypt/letsencrypt-jbjonesjr.sh/certs/jbjonesjr.com/cert.pem
+ + Done!
+```
+
+### Certificate with additional alias(es)
 ``` bash
 # **Note:** The `dehyrdrated` client uses the following flags in this example
 # --cron (-c): Sign/renew non-existant/changed/expiring certificates. 
