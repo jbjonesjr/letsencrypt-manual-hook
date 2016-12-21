@@ -5,10 +5,8 @@ require 'resolv'
 def setup_dns(domain, txt_challenge)
   dns = Resolv::DNS.new;
   acme_domain = "_acme-challenge."+domain; 
-  puts "Create TXT record for the domain: \"#{acme_domain}\". TXT record:"
+  puts "Checking TXT record for the domain: \"#{acme_domain}\". TXT record:"
   puts "\"#{txt_challenge}\""
-  puts "Press enter when DNS has been updated..."
-  $stdin.readline()
   resolved = false;
 
   until resolved
@@ -20,7 +18,14 @@ def setup_dns(domain, txt_challenge)
        puts "Found #{resp.strings[0]}. no match."
      end
     }
+
     if !resolved
+
+     puts "Create TXT record for the domain: \"#{acme_domain}\". TXT record:"
+     puts "\"#{txt_challenge}\""
+     puts "Press enter when DNS has been updated..."
+     $stdin.readline()
+
      puts "Didn't find a match for #{txt_challenge}"; 
      puts "Waiting to retry..."; 
      sleep 30; 
@@ -29,8 +34,7 @@ def setup_dns(domain, txt_challenge)
 end
 
 def delete_dns(domain, txt_challenge)
-  puts "Challenge complete. Please delete this TXT record now (or in bulk later). Press enter to continue..."
-  $stdin.readline()
+  puts "Challenge complete. Leave TXT record in place to allow easier future refreshes."
 end
 
 if __FILE__ == $0
