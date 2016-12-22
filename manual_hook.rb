@@ -7,8 +7,7 @@ def setup_dns(domain, txt_challenge)
   singleLoop = false;
   dns = Resolv::DNS.new;
   acme_domain = "_acme-challenge."+domain; 
-  puts "Checking TXT record for the domain: \"#{acme_domain}\". TXT record:"
-  puts "\"#{txt_challenge}\""
+  puts "Checking for pre-existing TXT record for the domain: \"#{acme_domain}\"."
 
   until resolved
     dns.each_resource(acme_domain, Resolv::DNS::Resource::IN::TXT) { |resp|
