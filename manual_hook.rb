@@ -7,7 +7,7 @@ def setup_dns(domain, txt_challenge)
   singleLoop = false;
   dns = Resolv::DNS.new;
   acme_domain = "_acme-challenge."+domain; 
-  puts "Checking for pre-existing TXT record for the domain: \"#{acme_domain}\"."
+  puts "Checking for pre-existing TXT record for the domain: \'#{acme_domain}\'."
 
   until resolved
     dns.each_resource(acme_domain, Resolv::DNS::Resource::IN::TXT) { |resp|
@@ -21,8 +21,8 @@ def setup_dns(domain, txt_challenge)
 
     if !resolved
      if !singleLoop
-       puts "Create TXT record for the domain: \"#{acme_domain}\". TXT record:"
-       puts "\"#{txt_challenge}\""
+       puts "Create TXT record for the domain: \'#{acme_domain}\'. TXT record:"
+       puts "\'#{txt_challenge}\'"
        puts "Press enter when DNS has been updated..."
        $stdin.readline()
        singleLoop = true
