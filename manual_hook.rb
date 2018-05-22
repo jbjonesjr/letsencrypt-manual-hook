@@ -14,10 +14,9 @@ def resolved?(dns, challenge)
       return true
     else
       puts "Found #{resp.strings[0]}. no match."
-      return false
     end
   }
-  puts "Didn't find a match for #{challenge[txt_challenge]}"
+  puts "There is no matching TXT record for #{challenge[:acme_domain]} it should have been: #{challenge[:txt_challenge]}"
   return false
 end
 
@@ -58,7 +57,7 @@ if __FILE__ == $0
   challenges = []
   while ARGV.length >= 3
     domain = ARGV.shift
-    acme_domain = "_acme-challenge.#{domain}"
+    acme_domain = "_acme-challenge.#{domain}".sub(/\.\*\./, ".")
     ARGV.shift
     txt_challenge = ARGV.shift
     challenges.push Challenge.new(domain, acme_domain, txt_challenge)
