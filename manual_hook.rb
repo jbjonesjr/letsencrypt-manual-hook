@@ -9,12 +9,13 @@ Challenge = Struct.new(:domain, :acme_domain, :txt_challenge)
 # Check if a challenge is resolved, returns true in that case
 def resolved?(dns, challenge)
   dns.each_resource(challenge[:acme_domain], Resolv::DNS::Resource::IN::TXT) { |resp|
-    if resp.strings[0] == challenge[:txt_challenge]
-      puts "Found #{resp.strings[0]}. match."
-      return true
-    else
-      puts "Found TXT record with the an attribute value '#{challenge[:acme_domain]}', but it's value, '#{resp.strings[0]}', didn't match expected value of #{challenge[:txt_challenge]}"
+    resp.strings.each do |curr_resp|
+      if curr_resp == challenge[:txt_challenge]
+        puts "Found #{resp.strings[0]}, a match."
+        return true
+      end
     end
+    puts "Found TXT record for '#{challenge[:acme_domain]}', but didn't match expected value of #{challenge[:txt_challenge]}"    
   }
   puts "Either found no TXT record matching an attribute value of '#{challenge[:acme_domain]}', or no correct matches"
   return false
