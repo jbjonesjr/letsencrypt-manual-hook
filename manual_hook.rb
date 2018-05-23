@@ -20,7 +20,7 @@ def resolved?(dns, challenge)
     puts "✘ #{challenge[:acme_domain]}: Found TXT record, but didn't match expected value of #{challenge[:txt_challenge]}"    
   }
   if !valid
-    puts "✘ #{challenge[:acme_domain]}: Found no TXT record matching"
+    puts "✘ #{challenge[:acme_domain]}: Found no TXT record"
   end
   return false
 end
