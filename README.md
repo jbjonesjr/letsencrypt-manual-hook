@@ -1,5 +1,11 @@
 # Manual DNS hook for dehydrated
 
+### Latest Changes
+v1: initial release. Support dehydrated client and domain registration via acme
+v2: acme 2.0 support, including hook_chain configuration option and wildcard certificates
+
+### Overview
+
 This repository contains a ruby-based hook for the [`dehydrated`](dehydrated: https://github.com/lukas2511/dehydrated) project (a [Let's Encrypt](https://letsencrypt.org/), shell script ACME client) that allows a user to obtain a certificate from the _Let's Encrypt_ API via a DNS challenge. The hook will provide you with the domain and challenge details required for you to add to your DNS records, and poll until this change has propogated before allowing Let's Encrypt to confirm that changes. This is helpful for DNS providers and solutions that do not provide an API. This is an interactive hook to support those DNS providers that require manual interaction.
 
 Looking for a DNS provider with an API? Try AWS Route 53, Rackspace, or CloudFlare.
