@@ -8,16 +8,20 @@ Challenge = Struct.new(:domain, :acme_domain, :txt_challenge)
 
 # Check if a challenge is resolved, returns true in that case
 def resolved?(dns, challenge)
+  valid = false
   dns.each_resource(challenge[:acme_domain], Resolv::DNS::Resource::IN::TXT) { |resp|
     resp.strings.each do |curr_resp|
       if curr_resp == challenge[:txt_challenge]
-        puts "✔ Found #{curr_resp}, a match."
+        puts "✔ #{challenge[:acme_domain]}: Found #{curr_resp}, a match."
         return true
       end
     end
-    puts "✘ Found TXT record for '#{challenge[:acme_domain]}', but didn't match expected value of #{challenge[:txt_challenge]}"    
+    valid = true
+    puts "✘ #{challenge[:acme_domain]}: Found TXT record, but didn't match expected value of #{challenge[:txt_challenge]}"    
   }
-  puts "✘ Either found no TXT record matching an attribute value of '#{challenge[:acme_domain]}', or no correct matches"
+  if !valid
+    puts "✘ #{challenge[:acme_domain]}: Found no TXT record matching"
+  end
   return false
 end
 
@@ -27,7 +31,6 @@ def setup_dns(challenges)
   first_iteration = true
   until challenges.empty? # Until all challenges are resolved
     challenges.delete_if do |challenge| # Delete resolved challenges
-      puts "Checking for TXT record for the domain: \'#{challenge[:acme_domain]}\'."
       resolved?(dns, challenge)
     end
 
@@ -35,9 +38,9 @@ def setup_dns(challenges)
       challenges.each do |challenge|
         puts "Create TXT record for the domain: \'#{challenge[:acme_domain]}\'. TXT record:"
         puts "\'#{challenge[:txt_challenge]}\'"
+        puts "Press enter when DNS has been updated..."
+        $stdin.readline
       end
-      puts "Press enter when DNS has been updated..."
-      $stdin.readline
       first_iteration = false
     else
       unless challenges.empty?
