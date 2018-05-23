@@ -11,7 +11,7 @@ def resolved?(dns, challenge)
   dns.each_resource(challenge[:acme_domain], Resolv::DNS::Resource::IN::TXT) { |resp|
     resp.strings.each do |curr_resp|
       if curr_resp == challenge[:txt_challenge]
-        puts "Found #{resp.strings[0]}, a match."
+        puts "Found #{curr_resp}, a match."
         return true
       end
     end
