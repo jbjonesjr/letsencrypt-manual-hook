@@ -13,7 +13,7 @@ def resolved?(dns, challenge)
       puts "Found #{resp.strings[0]}. match."
       return true
     else
-      puts "Found TXT record with the attribute_value(#{challenge[:acme_domain]}), but value(#{resp.strings[0]}) didn't match expected value of #{txt_challenge}"
+      puts "Found TXT record with the attribute_value(#{challenge[:acme_domain]}), but value(#{resp.strings[0]}) didn't match expected value of #{challenge[:txt_challenge]}"
     end
   }
   puts "There is no TXT record matching attribute value of #{challenge[:acme_domain]}"
